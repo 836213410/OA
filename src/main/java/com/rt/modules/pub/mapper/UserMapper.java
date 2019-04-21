@@ -1,11 +1,11 @@
 package com.rt.modules.pub.mapper;
 
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
 import com.rt.global.database.BaseMapper;
-import com.rt.modules.pub.po.User;
+import com.rt.modules.pub.po.UserPo;
 
-public interface UserMapper extends BaseMapper<User,Long>{
+@Repository
+public interface UserMapper extends BaseMapper<UserPo,Long>{
 
-	List<User> getAll();
 }

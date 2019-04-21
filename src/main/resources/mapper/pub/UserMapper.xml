@@ -1,9 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
-<mapper namespace="com.rt.modules.pub.mapper.UserMapper">
-	<select id="getAll" resultType="com.rt.modules.pub.po.User">
-		SELECT * FROM USER
-	</select>
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 
+      
+<mapper namespace="com.rt.modules.pub.mapper.UserMapper">
+
+     <!-- 
+          ################ Dapeng Generator 生成, 公共SQL开始,这些SQL仅用于构成操作表的SQL,以简化配置 ##################   
+     -->
+    
+    <!-- user 表所有列 -->
+    <sql id="pubSelect">
+      SELECT 
+        id id, name name
+      FROM user 
+    </sql>
+    
+    <!-- user 统计记录数 -->
+    <sql id="pubCount">
+      SELECT COUNT(1) FROM user
+    </sql>
+    
+    <!-- 插入sql -->
+    <sql id="pubInsert">  
+        INSERT INTO user 
+          <trim prefix="(" suffixOverrides=",">
+             <if test="id != null">id,</if>
+             <if test="name != null">name,</if>
+          </trim>
+          ) VALUES
+          <trim prefix="(" suffixOverrides=",">
+             <if test="id != null">#{id},</if>
+             <if test="name != null">#{name},</if>
+         </trim>
+         )
+    </sql>
+    
+    <!-- 修改 user 表记录基础SQL,不能包含主键 -->
+    <sql id="pubUpdateColumns">
+       UPDATE user 
+         <set>
+             <if test="name != null">name = #{name},</if>
+         </set>
+    </sql>
+    
+    <!-- 删除 user 表记录基础SQL -->
+    <sql id="pubDelete">
+        DELETE FROM user
+    </sql>
+    
+     <!-- user 表主键 WHERE 条件 -->
+    <sql id="pubPkColumnsWhere">
+        AND id = #{id}
+    </sql>
+  
+    <!-- user 表所有列 WHERE 条件 -->
+    <sql id="pubAllColumnsWhere">
+        <if test="id != null"> AND id = #{id} </if>
+        <if test="name != null"> AND name = #{name} </if>
+    </sql>
+    
+    <!-- user 表所有列 WHERE 条件, 加Cdn后缀作为HashMap键值,一般仅用于Update语名 -->
+    <sql id="pubAllColumnsUpdateWhere">
+        <if test="idCdn != null"> AND id = #{idCdn} </if>
+        <if test="nameCdn != null"> AND name = #{nameCdn} </if>
+    </sql>
+    
+    <!-- 
+        ######################## Pengpeng Generator 生成, 以下是对表进行增,查,改,删 ########################  
+     -->
+    
+    <!-- 向 user 表新增记录 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.rt.modules.pub.po.UserPo">  
+        <include refid="pubInsert"/>
+    </insert>
+    
+    <!-- 修改 user 表记录, 传入参数是一个对象 -->
+    <update id="updateByPk" parameterType="com.rt.modules.pub.po.UserPo">
+       <include refid="pubUpdateColumns"/>
+       <where>
+           <include refid="pubPkColumnsWhere"/>
+       </where>
+    </update>
+    
+    <!-- 修改 user 表记录, 传入参数是一个java.util.HashMap, HashMap的条件值加Cdn后缀以区别Update Set的属性 -->
+    <update id="updateByHashMap" parameterType="java.util.HashMap">
+       <include refid="pubUpdateColumns"/>
+       <where>
+           <include refid="pubAllColumnsUpdateWhere"/>
+       </where>
+    </update>
+    
+    <!-- 删除 user 表记录, 传入参数是一个对象 -->
+    <delete id="deleteByPk" parameterType="java.lang.Long">
+       <include refid="pubDelete"/>
+       <where>
+           <include refid="pubPkColumnsWhere"/>
+       </where>
+    </delete>
+    
+    <!-- 删除 user 表记录, 传入参数是一个java.util.HashMap -->
+    <delete id="deleteByObj" parameterType="com.rt.modules.pub.po.UserPo">
+       <include refid="pubDelete"/>
+       <where>
+           <include refid="pubAllColumnsWhere"/>
+       </where>
+    </delete>
+    
+    <!-- 查符合条件的记录数 -->
+    <select  id="findObjByPk" parameterType="java.lang.Long" resultType="com.rt.modules.pub.po.UserPo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubPkColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 所有列作为查询条件, 查询 user 表所有列, 传入参数是Object, 返回一个集合 -->
+    <select  id="queryLstByObj" parameterType="com.rt.modules.pub.po.UserPo" resultType="com.rt.modules.pub.po.UserPo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 查符合条件的记录数 -->
+    <select  id="queryCountByObj" parameterType="com.rt.modules.pub.po.UserPo" resultType="java.lang.Integer">
+        <include refid="pubCount"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+
+    <!-- 所有列作为查询条件, 查询 user 表所有列, 传入参数是Object, 返回一个分页后的集合 -->
+    <select  id="queryPageByObj" parameterType="com.rt.modules.pub.po.UserPo" resultType="com.rt.modules.pub.po.UserPo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 查符合条件的记录数 -->
+    <select  id="queryCountByMap" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        <include refid="pubCount"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 所有列作为查询条件, 查询 user 表所有列, 传入参数是Object, 返回一个集合 -->
+    <select  id="queryPageByMap" parameterType="java.util.HashMap" resultType="com.rt.modules.pub.po.UserPo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 
+        ########################################## 以下放置您的代码 ##########################################  
+     -->
+    
 </mapper>

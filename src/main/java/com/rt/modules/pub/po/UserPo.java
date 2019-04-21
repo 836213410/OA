@@ -1,6 +1,6 @@
 package com.rt.modules.pub.po;
 
-public class User {
+public class UserPo {
 
 	private Long id;
 	private String name;
