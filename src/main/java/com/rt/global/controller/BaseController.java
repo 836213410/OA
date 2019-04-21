@@ -12,14 +12,15 @@ import com.rt.global.dto.ExceptionBaseRes;
 import com.rt.global.exception.CommonException;
 
 
-
 /**
- * Description: 控制器基类<br/>
- * Create info: wanpeng.hui, 2018年4月1日 <br/>
- * Copyright (c) 2018, Hema Information Technology Co.,Ltd. All Rights Reserved.
+ * 
+ *Description:Base controller<br/>
+ *Create info: hongyang.zhao, 2019年4月21日 <br/>
+ *Copyright (c) 2019, Hema Information Technology Co.,Ltd. All Rights Reserved. <br/>
  *
- * @Version 1.0
+ *@Version 1.0
  */
+
 public class BaseController {
 	private static Logger logger = LoggerFactory.getLogger(BaseController.class);
 

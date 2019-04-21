@@ -2,12 +2,13 @@ package com.rt.global.exception;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-/**
- * Description: 通用异常 <br/>
- * Create info: wanpeng.hui, 2018年4月1日 <br/>
- * Copyright (c) 2018, Hema Information Technology Co.,Ltd. All Rights Reserved.
+
+/** 
+ *Description: 通用异常<br/>
+ *Create info: hongyang.zhao, 2019年4月21日 <br/>
+ *Copyright (c) 2019, Hema Information Technology Co.,Ltd. All Rights Reserved. <br/>
  *
- * @Version 1.0
+ *@Version 1.0
  */
 public class CommonException extends RuntimeException {
 	private static final long serialVersionUID = -7238666009207875808L;
