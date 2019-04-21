@@ -14,6 +14,7 @@ import com.rt.global.dto.BaseRes;
 import com.rt.global.dto.DltBaseReq;
 import com.rt.global.dto.QryObjRes;
 import com.rt.global.dto.QryPgBaseRes;
+import com.rt.modules.pub.dto.req.CrtUptUserReq;
 import com.rt.modules.pub.dto.req.QryPgUserReq;
 import com.rt.modules.pub.dto.vo.UserVo;
 import com.rt.modules.pub.service.CrtUptUserService;
@@ -72,6 +73,35 @@ public class UserMgrController extends BaseController {
 	}
 	
 
+	/**
+	 * Description: 执行添加<br/>
+	 * Create info: Wanpeng.Hui, 2019/04/21 <br/>
+	 *
+	 * @param req
+	 * @return
+	 */
+	@RequestMapping(value = "/crtUser")
+	public @ResponseBody BaseRes crtUser(CrtUptUserReq req) {
+		logger.info("服务提供者, 执行添加");
+		BaseRes res = crtUptUserService.crtUser(req);
+		logger.info("服务提供者, 响应码:{}, 响应消息:{}", res.getResCode(), res.getResMsg());
+		return res;
+	}
+
+	/**
+	 * Description: 执行修改<br/>
+	 * Create info: Wanpeng.Hui, 2019/04/21 <br/>
+	 *
+	 * @param req
+	 * @return
+	 */
+	@RequestMapping(value = "/uptUser")
+	public @ResponseBody BaseRes uptUser(CrtUptUserReq req) {
+		logger.info("服务提供者, 执行修改");
+		BaseRes res = crtUptUserService.uptUser(req);
+		logger.info("服务提供者, 响应码:{}, 响应消息:{}", res.getResCode(), res.getResMsg());
+		return res;
+	}
 	/**
 	 * Description: 逻辑删除<br/>
      * Create info: Wanpeng.Hui, 2019/04/21 <br/>
