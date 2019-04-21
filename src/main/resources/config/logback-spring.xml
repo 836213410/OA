@@ -31,7 +31,10 @@
 	</appender>
 	
 	
-	<logger name="com.rt.modules.pub.mapper.UserMapper" level="DEBUG" /> 
+<!-- 	<logger name="com.rt.modules.pub.mapper.UserMapper" level="DEBUG" /> --> 
+	   <logger name="com.rt.modules" level="debug" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
 
 	
    <!-- root logger -->
