@@ -1,8 +1,5 @@
 package com.rt.modules.pub.dto.vo;
 
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 /**
  *  [user] VO
  * Generate by Wanpeng.Hui's Dapeng-Generator 2019/04/21 <br/>
@@ -11,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class UserVo {
   
     // ------- 以下是通用字段 ---------------------------
-	@JsonFormat(shape=JsonFormat.Shape.STRING)
     private Long id; 
 	private String name; 
   

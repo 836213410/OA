@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+      
+<mapper namespace="com.rt.modules.employee.mapper.EmployeeMapper">
+
+     <!-- 
+          ################ Dapeng Generator 生成, 公共SQL开始,这些SQL仅用于构成操作表的SQL,以简化配置 ##################   
+     -->
+    
+    <!-- employee 表所有列 -->
+    <sql id="pubSelect">
+      SELECT 
+        id id, username username, realname realname, email email, mobile mobile, age age, sex sex, hiredate hiredate, departuretime departuretime, status status, department_id departmentId, employee_id employeeId, rmk rmk, jobnumber jobnumber, salary_id salaryId, edubg edubg, dltFlg dltflg, idcard idcard
+      FROM employee 
+    </sql>
+    
+    <!-- employee 统计记录数 -->
+    <sql id="pubCount">
+      SELECT COUNT(1) FROM employee
+    </sql>
+    
+    <!-- 插入sql -->
+    <sql id="pubInsert">  
+        INSERT INTO employee 
+          <trim prefix="(" suffixOverrides=",">
+             <if test="id != null">id,</if>
+             <if test="username != null">username,</if>
+             <if test="realname != null">realname,</if>
+             <if test="email != null">email,</if>
+             <if test="mobile != null">mobile,</if>
+             <if test="age != null">age,</if>
+             <if test="sex != null">sex,</if>
+             <if test="hiredate != null">hiredate,</if>
+             <if test="departuretime != null">departuretime,</if>
+             <if test="status != null">status,</if>
+             <if test="departmentId != null">department_id,</if>
+             <if test="employeeId != null">employee_id,</if>
+             <if test="rmk != null">rmk,</if>
+             <if test="jobnumber != null">jobnumber,</if>
+             <if test="salaryId != null">salary_id,</if>
+             <if test="edubg != null">edubg,</if>
+             <if test="dltflg != null">dltFlg,</if>
+             <if test="idcard != null">idcard,</if>
+          </trim>
+          ) VALUES
+          <trim prefix="(" suffixOverrides=",">
+             <if test="id != null">#{id},</if>
+             <if test="username != null">#{username},</if>
+             <if test="realname != null">#{realname},</if>
+             <if test="email != null">#{email},</if>
+             <if test="mobile != null">#{mobile},</if>
+             <if test="age != null">#{age},</if>
+             <if test="sex != null">#{sex},</if>
+             <if test="hiredate != null">#{hiredate},</if>
+             <if test="departuretime != null">#{departuretime},</if>
+             <if test="status != null">#{status},</if>
+             <if test="departmentId != null">#{departmentId},</if>
+             <if test="employeeId != null">#{employeeId},</if>
+             <if test="rmk != null">#{rmk},</if>
+             <if test="jobnumber != null">#{jobnumber},</if>
+             <if test="salaryId != null">#{salaryId},</if>
+             <if test="edubg != null">#{edubg},</if>
+             <if test="dltflg != null">#{dltflg},</if>
+             <if test="idcard != null">#{idcard},</if>
+         </trim>
+         )
+    </sql>
+    
+    <!-- 修改 employee 表记录基础SQL,不能包含主键 -->
+    <sql id="pubUpdateColumns">
+       UPDATE employee 
+         <set>
+             <if test="username != null">username = #{username},</if>
+             <if test="realname != null">realname = #{realname},</if>
+             <if test="email != null">email = #{email},</if>
+             <if test="mobile != null">mobile = #{mobile},</if>
+             <if test="age != null">age = #{age},</if>
+             <if test="sex != null">sex = #{sex},</if>
+             <if test="hiredate != null">hiredate = #{hiredate},</if>
+             <if test="departuretime != null">departuretime = #{departuretime},</if>
+             <if test="status != null">status = #{status},</if>
+             <if test="departmentId != null">department_id = #{departmentId},</if>
+             <if test="employeeId != null">employee_id = #{employeeId},</if>
+             <if test="rmk != null">rmk = #{rmk},</if>
+             <if test="jobnumber != null">jobnumber = #{jobnumber},</if>
+             <if test="salaryId != null">salary_id = #{salaryId},</if>
+             <if test="edubg != null">edubg = #{edubg},</if>
+             <if test="dltflg != null">dltFlg = #{dltflg},</if>
+             <if test="idcard != null">idcard = #{idcard},</if>
+         </set>
+    </sql>
+    
+    <!-- 删除 employee 表记录基础SQL -->
+    <sql id="pubDelete">
+        DELETE FROM employee
+    </sql>
+    
+     <!-- employee 表主键 WHERE 条件 -->
+    <sql id="pubPkColumnsWhere">
+        AND id = #{id}
+    </sql>
+  
+    <!-- employee 表所有列 WHERE 条件 -->
+    <sql id="pubAllColumnsWhere">
+        <if test="id != null"> AND id = #{id} </if>
+        <if test="username != null"> AND username = #{username} </if>
+        <if test="realname != null"> AND realname = #{realname} </if>
+        <if test="email != null"> AND email = #{email} </if>
+        <if test="mobile != null"> AND mobile = #{mobile} </if>
+        <if test="age != null"> AND age = #{age} </if>
+        <if test="sex != null"> AND sex = #{sex} </if>
+        <if test="hiredate != null"> AND hiredate = #{hiredate} </if>
+        <if test="departuretime != null"> AND departuretime = #{departuretime} </if>
+        <if test="status != null"> AND status = #{status} </if>
+        <if test="departmentId != null"> AND department_id = #{departmentId} </if>
+        <if test="employeeId != null"> AND employee_id = #{employeeId} </if>
+        <if test="rmk != null"> AND rmk = #{rmk} </if>
+        <if test="jobnumber != null"> AND jobnumber = #{jobnumber} </if>
+        <if test="salaryId != null"> AND salary_id = #{salaryId} </if>
+        <if test="edubg != null"> AND edubg = #{edubg} </if>
+        <if test="dltflg != null"> AND dltFlg = #{dltflg} </if>
+        <if test="idcard != null"> AND idcard = #{idcard} </if>
+    </sql>
+    
+    <!-- employee 表所有列 WHERE 条件, 加Cdn后缀作为HashMap键值,一般仅用于Update语名 -->
+    <sql id="pubAllColumnsUpdateWhere">
+        <if test="idCdn != null"> AND id = #{idCdn} </if>
+        <if test="usernameCdn != null"> AND username = #{usernameCdn} </if>
+        <if test="realnameCdn != null"> AND realname = #{realnameCdn} </if>
+        <if test="emailCdn != null"> AND email = #{emailCdn} </if>
+        <if test="mobileCdn != null"> AND mobile = #{mobileCdn} </if>
+        <if test="ageCdn != null"> AND age = #{ageCdn} </if>
+        <if test="sexCdn != null"> AND sex = #{sexCdn} </if>
+        <if test="hiredateCdn != null"> AND hiredate = #{hiredateCdn} </if>
+        <if test="departuretimeCdn != null"> AND departuretime = #{departuretimeCdn} </if>
+        <if test="statusCdn != null"> AND status = #{statusCdn} </if>
+        <if test="departmentIdCdn != null"> AND department_id = #{departmentIdCdn} </if>
+        <if test="employeeIdCdn != null"> AND employee_id = #{employeeIdCdn} </if>
+        <if test="rmkCdn != null"> AND rmk = #{rmkCdn} </if>
+        <if test="jobnumberCdn != null"> AND jobnumber = #{jobnumberCdn} </if>
+        <if test="salaryIdCdn != null"> AND salary_id = #{salaryIdCdn} </if>
+        <if test="edubgCdn != null"> AND edubg = #{edubgCdn} </if>
+        <if test="dltflgCdn != null"> AND dltFlg = #{dltflgCdn} </if>
+        <if test="idcardCdn != null"> AND idcard = #{idcardCdn} </if>
+    </sql>
+    
+    <!-- 
+        ######################## Pengpeng Generator 生成, 以下是对表进行增,查,改,删 ########################  
+     -->
+    
+    <!-- 向 employee 表新增记录 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.rt.modules.employee.po.EmployeePo">  
+        <include refid="pubInsert"/>
+    </insert>
+    
+    <!-- 修改 employee 表记录, 传入参数是一个对象 -->
+    <update id="updateByPk" parameterType="com.rt.modules.employee.po.EmployeePo">
+       <include refid="pubUpdateColumns"/>
+       <where>
+           <include refid="pubPkColumnsWhere"/>
+       </where>
+    </update>
+    
+    <!-- 修改 employee 表记录, 传入参数是一个java.util.HashMap, HashMap的条件值加Cdn后缀以区别Update Set的属性 -->
+    <update id="updateByHashMap" parameterType="java.util.HashMap">
+       <include refid="pubUpdateColumns"/>
+       <where>
+           <include refid="pubAllColumnsUpdateWhere"/>
+       </where>
+    </update>
+    
+    <!-- 删除 employee 表记录, 传入参数是一个对象 -->
+    <delete id="deleteByPk" parameterType="java.lang.Long">
+       <include refid="pubDelete"/>
+       <where>
+           <include refid="pubPkColumnsWhere"/>
+       </where>
+    </delete>
+    
+    <!-- 删除 employee 表记录, 传入参数是一个java.util.HashMap -->
+    <delete id="deleteByObj" parameterType="com.rt.modules.employee.po.EmployeePo">
+       <include refid="pubDelete"/>
+       <where>
+           <include refid="pubAllColumnsWhere"/>
+       </where>
+    </delete>
+    
+    <!-- 查符合条件的记录数 -->
+    <select  id="findObjByPk" parameterType="java.lang.Long" resultType="com.rt.modules.employee.po.EmployeePo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubPkColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 所有列作为查询条件, 查询 employee 表所有列, 传入参数是Object, 返回一个集合 -->
+    <select  id="queryLstByObj" parameterType="com.rt.modules.employee.po.EmployeePo" resultType="com.rt.modules.employee.po.EmployeePo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 查符合条件的记录数 -->
+    <select  id="queryCountByObj" parameterType="com.rt.modules.employee.po.EmployeePo" resultType="java.lang.Integer">
+        <include refid="pubCount"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+
+    <!-- 所有列作为查询条件, 查询 employee 表所有列, 传入参数是Object, 返回一个分页后的集合 -->
+    <select  id="queryPageByObj" parameterType="com.rt.modules.employee.po.EmployeePo" resultType="com.rt.modules.employee.po.EmployeePo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 查符合条件的记录数 -->
+    <select  id="queryCountByMap" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        <include refid="pubCount"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 所有列作为查询条件, 查询 employee 表所有列, 传入参数是Object, 返回一个集合 -->
+    <select  id="queryPageByMap" parameterType="java.util.HashMap" resultType="com.rt.modules.employee.po.EmployeePo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 
+        ########################################## 以下放置您的代码 ##########################################  
+     -->
+    
+</mapper>
