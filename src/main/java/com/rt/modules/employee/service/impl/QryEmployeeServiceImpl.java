@@ -55,6 +55,7 @@ public class QryEmployeeServiceImpl implements QryEmployeeService{
 		employeeVo.setRealname(po.getRealname()); // 真实姓名
 		employeeVo.setEmail(po.getEmail()); // 电子邮件
 		employeeVo.setMobile(po.getMobile()); 
+		employeeVo.setPassword(po.getPassword()); 
 		employeeVo.setAge(po.getAge()); // 年龄
 		employeeVo.setSex(po.getSex()); // 性别 1为男0为女
 		employeeVo.setHiredate(po.getHiredate()); // 入职时间
@@ -101,6 +102,7 @@ public class QryEmployeeServiceImpl implements QryEmployeeService{
 				employeeVo.setUsername(po.getUsername()); // 用户名
 				employeeVo.setRealname(po.getRealname()); // 真实姓名
 				employeeVo.setEmail(po.getEmail()); // 电子邮件
+				employeeVo.setPassword(po.getPassword()); 
 				employeeVo.setMobile(po.getMobile()); 
 				employeeVo.setAge(po.getAge()); // 年龄
 				employeeVo.setSex(po.getSex()); // 性别 1为男0为女

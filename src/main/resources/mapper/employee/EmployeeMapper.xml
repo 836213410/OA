@@ -12,7 +12,7 @@
     <!-- employee 表所有列 -->
     <sql id="pubSelect">
       SELECT 
-        id id, username username, realname realname, email email, mobile mobile, age age, sex sex, hiredate hiredate, departuretime departuretime, status status, department_id departmentId, employee_id employeeId, rmk rmk, jobnumber jobnumber, salary_id salaryId, edubg edubg, dltFlg dltflg, idcard idcard
+        id id, username username,password password, realname realname, email email, mobile mobile, age age, sex sex, hiredate hiredate, departuretime departuretime, status status, department_id departmentId, employee_id employeeId, rmk rmk, jobnumber jobnumber, salary_id salaryId, edubg edubg, dltFlg dltflg, idcard idcard
       FROM employee 
     </sql>
     
@@ -27,6 +27,7 @@
           <trim prefix="(" suffixOverrides=",">
              <if test="id != null">id,</if>
              <if test="username != null">username,</if>
+             <if test="password != null">password,</if>
              <if test="realname != null">realname,</if>
              <if test="email != null">email,</if>
              <if test="mobile != null">mobile,</if>
@@ -48,6 +49,7 @@
           <trim prefix="(" suffixOverrides=",">
              <if test="id != null">#{id},</if>
              <if test="username != null">#{username},</if>
+             <if test="password != null">#{password},</if>
              <if test="realname != null">#{realname},</if>
              <if test="email != null">#{email},</if>
              <if test="mobile != null">#{mobile},</if>
@@ -73,6 +75,7 @@
        UPDATE employee 
          <set>
              <if test="username != null">username = #{username},</if>
+             <if test="password != null">password = #{password},</if>
              <if test="realname != null">realname = #{realname},</if>
              <if test="email != null">email = #{email},</if>
              <if test="mobile != null">mobile = #{mobile},</if>
@@ -106,6 +109,7 @@
     <sql id="pubAllColumnsWhere">
         <if test="id != null"> AND id = #{id} </if>
         <if test="username != null"> AND username = #{username} </if>
+        <if test="password != null"> AND password = #{password} </if>
         <if test="realname != null"> AND realname = #{realname} </if>
         <if test="email != null"> AND email = #{email} </if>
         <if test="mobile != null"> AND mobile = #{mobile} </if>
@@ -128,6 +132,7 @@
     <sql id="pubAllColumnsUpdateWhere">
         <if test="idCdn != null"> AND id = #{idCdn} </if>
         <if test="usernameCdn != null"> AND username = #{usernameCdn} </if>
+        <if test="passwordCdn != null"> AND password = #{passwordCdn} </if>
         <if test="realnameCdn != null"> AND realname = #{realnameCdn} </if>
         <if test="emailCdn != null"> AND email = #{emailCdn} </if>
         <if test="mobileCdn != null"> AND mobile = #{mobileCdn} </if>

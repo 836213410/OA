@@ -81,6 +81,7 @@ public class CrtUptEmployeeServiceImpl implements CrtUptEmployeeService{
  		employeePo.setUsername(req.getUsername()); // 用户名
  		employeePo.setRealname(req.getRealname()); // 真实姓名
  		employeePo.setEmail(req.getEmail()); // 电子邮件
+ 		employeePo.setPassword(req.getPassowrd()); // 电子邮件
  		employeePo.setMobile(req.getMobile()); 
  		employeePo.setAge(req.getAge()); // 年龄
  		employeePo.setSex(req.getSex()); // 性别 1为男0为女

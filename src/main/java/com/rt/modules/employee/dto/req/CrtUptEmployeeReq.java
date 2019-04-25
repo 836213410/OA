@@ -17,7 +17,16 @@ public class CrtUptEmployeeReq extends BaseReq{
   
     private Long id; // 员工id,主键,不能为空
     private String username; // 用户名,不能为空
-    private String realname; // 真实姓名,不能为空
+    private String passowrd; // 用户名,不能为空
+    public String getPassowrd() {
+		return passowrd;
+	}
+
+	public void setPassowrd(String passowrd) {
+		this.passowrd = passowrd;
+	}
+
+	private String realname; // 真实姓名,不能为空
     private String email; // 电子邮件,不能为空
     private String mobile; 
     private Long age; // 年龄,不能为空

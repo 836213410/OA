@@ -14,6 +14,7 @@ public class EmployeePo {
 
     private Long id; // 员工id,主键,不能为空
     private String username; // 用户名,不能为空
+    private String password; // 用户名,不能为空
     private String realname; // 真实姓名,不能为空
     private String email; // 电子邮件,不能为空
     private String mobile; 
@@ -77,7 +78,15 @@ public class EmployeePo {
       this.username = username;
     }
     
-    /** 
+    public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/** 
      *Getter 真实姓名,不能为空
      *@return
      */

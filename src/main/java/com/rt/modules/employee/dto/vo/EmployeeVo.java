@@ -14,6 +14,8 @@ public class EmployeeVo {
     // ------- 以下是通用字段 ---------------------------
     private Long id; // 员工id
 	private String username; // 用户名
+	private String password; // 用户名
+
 	private String realname; // 真实姓名
 	private String email; // 电子邮件
 	private String mobile; 
@@ -63,6 +65,14 @@ public class EmployeeVo {
     public void setUsername(String username){
       this.username = username;
     }
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
     /** 
      *Getter 真实姓名,不能为空
      *@return
