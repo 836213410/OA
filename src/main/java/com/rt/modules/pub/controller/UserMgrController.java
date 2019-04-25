@@ -46,6 +46,11 @@ public class UserMgrController extends BaseController {
   	
 	
 
+	@RequestMapping("/goUserPage")
+	public String goUserPage() {
+		return "/pub/user";
+	}
+	
 	/**
 	 * 分页查询
 	 * @param req

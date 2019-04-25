@@ -66,9 +66,15 @@ public class QryUserServiceImpl implements QryUserService{
         QryPgBaseRes<UserVo> res = new QryPgBaseRes<UserVo>();
       
         // 记录传入参数, 以方便调试
-	
+      
+        
         HashMap<String, Object> conditionMap = new HashMap<String, Object>();
-  
+        if (req.getId() != null) {
+    		conditionMap.put("id", req.getId());
+        }
+        if (req.getName() != null) {
+        	conditionMap.put("name", req.getName());
+        }
 		int total = userMapper.queryCountByMap(conditionMap); // 统计条数
 		if (total > 0) {
 			// 从数据库查询
@@ -86,8 +92,8 @@ public class QryUserServiceImpl implements QryUserService{
 				
 				userVoLst.add(userVo); // 加入集合
 			}
-			res.setTotal(total); //设置统计条数
-			res.setRows(userVoLst); // 设置VO集合
+			res.setCount(total); //设置统计条数
+			res.setData(userVoLst); // 设置VO集合
 		}
 		
 		res.setResCode(ResConstant.OPR_SUCC_QUIET);

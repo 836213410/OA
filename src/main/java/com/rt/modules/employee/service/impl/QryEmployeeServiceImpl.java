@@ -66,7 +66,7 @@ public class QryEmployeeServiceImpl implements QryEmployeeService{
 		employeeVo.setJobnumber(po.getJobnumber()); // 工号
 		employeeVo.setSalaryId(po.getSalaryId()); 
 		employeeVo.setEdubg(po.getEdubg()); // 学历 1本科2大专3硕士4博士5大专以下
-		employeeVo.setDltflg(po.getDltFlg()); // 删除类型
+		employeeVo.setDltFlg(po.getDltFlg()); // 删除类型
 		employeeVo.setIdcard(po.getIdcard()); // 身份证号码
 		
 		res.setObj(employeeVo); // 设置对象
@@ -113,13 +113,13 @@ public class QryEmployeeServiceImpl implements QryEmployeeService{
 				employeeVo.setJobnumber(po.getJobnumber()); // 工号
 				employeeVo.setSalaryId(po.getSalaryId()); 
 				employeeVo.setEdubg(po.getEdubg()); // 学历 1本科2大专3硕士4博士5大专以下
-				employeeVo.setDltflg(po.getDltFlg()); // 删除类型
+				employeeVo.setDltFlg(po.getDltFlg()); // 删除类型
 				employeeVo.setIdcard(po.getIdcard()); // 身份证号码
 				
 				employeeVoLst.add(employeeVo); // 加入集合
 			}
-			res.setTotal(total); //设置统计条数
-			res.setRows(employeeVoLst); // 设置VO集合
+			res.setCount(total); //设置统计条数
+			res.setData(employeeVoLst); // 设置VO集合
 		}
 		
 		res.setResCode(ResConstant.OPR_SUCC_QUIET);

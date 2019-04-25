@@ -28,7 +28,7 @@ public class EmployeeVo {
 	private String jobnumber; // 工号
 	private Long salaryId; 
 	private Short edubg; // 学历 1本科2大专3硕士4博士5大专以下
-	private Short dltflg; // 删除类型
+	private Short dltFlg; // 删除类型
 	private String idcard; // 身份证号码
   
     //-------- 以下是个性化字段 --------------------------
@@ -277,16 +277,16 @@ public class EmployeeVo {
      *Getter 删除类型
      *@return
      */
-    public Short getDltflg(){
-      return this.dltflg;
+    public Short getDltFlg(){
+      return this.dltFlg;
     }
     
     /** 
      *Setter 删除类型
      *@param dltflg
      */
-    public void setDltflg(Short dltflg){
-      this.dltflg = dltflg;
+    public void setDltFlg(Short dltFlg){
+      this.dltFlg = dltFlg;
     }
     /** 
      *Getter 身份证号码,不能为空
