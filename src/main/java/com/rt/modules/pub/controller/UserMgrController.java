@@ -2,6 +2,13 @@ package com.rt.modules.pub.controller;
 
 
 
+import java.awt.image.BufferedImage;
+import java.io.OutputStream;
+
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +21,7 @@ import com.rt.global.dto.BaseRes;
 import com.rt.global.dto.DltBaseReq;
 import com.rt.global.dto.QryObjRes;
 import com.rt.global.dto.QryPgBaseRes;
+import com.rt.global.utils.ImageUtil;
 import com.rt.modules.pub.dto.req.CrtUptUserReq;
 import com.rt.modules.pub.dto.req.QryPgUserReq;
 import com.rt.modules.pub.dto.vo.UserVo;
@@ -28,6 +36,13 @@ import com.rt.modules.pub.service.QryUserService;
  * Copyright (c) 2019, hwpok@163.com All Rights Reserved. <br/>
  *
  * @Version 1.0
+ */
+/** 
+ *Description: <br/>
+ *Create info: hongyang.zhao, 2019年4月25日 <br/>
+ *Copyright (c) 2019, Hema Information Technology Co.,Ltd. All Rights Reserved. <br/>
+ *
+ *@Version 1.0
  */
 @Controller
 @RequestMapping("/pub")
@@ -50,6 +65,24 @@ public class UserMgrController extends BaseController {
 	public String goUserPage() {
 		return "/pub/user";
 	}
+	
+	@RequestMapping("/login")
+	public String goLoginPage() {
+		return "/pub/login";
+	}
+	
+	
+	@RequestMapping("/valicode")
+	public void valicode(HttpServletResponse response, HttpSession session) throws Exception{  
+	    Object[] objs = ImageUtil.createImage(); //第一个参数是生成的验证码，第二个参数是生成的图片  
+	    String validateCode = ((String)(objs[0])).toLowerCase();
+	    session.setAttribute("validateCode", validateCode);  //将验证码存入Session
+	    
+	    BufferedImage image = (BufferedImage) objs[1];  
+	    response.setContentType("image/png");  
+	    OutputStream os = response.getOutputStream();  
+	    ImageIO.write(image, "png", os);   //将图片输出给浏览器  
+	}  
 	
 	/**
 	 * 分页查询
