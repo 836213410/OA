@@ -30,7 +30,7 @@ import com.rt.modules.employee.service.QryEmployeeService;
  * @Version 1.0
  */
 @Controller
-@RequestMapping("/pub")
+@RequestMapping("/employee")
 public class EmployeeMgrController extends BaseController {
 
 	@Autowired
@@ -41,6 +41,13 @@ public class EmployeeMgrController extends BaseController {
 	private DltEmployeeService dltEmployeeService; // 删除服务
 	
 	private static Logger logger = LoggerFactory.getLogger(EmployeeMgrController.class);
+	
+	
+	@RequestMapping("/goEmplpyeePage")
+	public String goEmplpyeePage() {
+		return "/employee/employee";
+	}
+	
 	
 	/**
 	 * Description: 执行查询 <br/>

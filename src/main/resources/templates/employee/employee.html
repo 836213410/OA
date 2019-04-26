@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>User</title>
+ <link rel="stylesheet" href="/static/layui/css/layui.css"  media="all">
+</head>
+
+<body>
+<div class="demoTable">
+  ID：
+  <div class="layui-inline">
+    <input class="layui-input" name="id" id="id" autocomplete="off">
+  </div>
+  姓名：
+  <div class="layui-inline">
+    <input class="layui-input" name="name" id="name" autocomplete="off">
+  </div>
+  <button class="layui-btn" data-type="reload">搜索</button>
+</div>
+<table id="demo" lay-filter="test"></table>
+
+</body>
+ 
+<script src="/static/layui/layui.js"></script>
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+  
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 500
+    ,toolbar:"#toolbarDemo"
+    ,title:"员工表"
+    ,url: '/employee/qryPgEmployee' //数据接口
+    ,page: true //开启分页
+    ,id:'testReload'
+    ,cols: [
+    		[ //表头
+    		  {type: 'checkbox', fixed: 'left'}
+			 ,{field: 'id', title: 'ID', width:150, sort: true, fixed: 'left'}
+     		 ,{field: 'username', title: '用户名', width:150}
+     		 ,{field: 'realname', title: '真实名字', width:150}
+     		 ,{field: 'email', title: '邮箱', width:150}
+     		 ,{field: 'mobile', title: '手机号', width:150}
+     		 ,{field: 'age', title: '年龄', width:150}
+     		 ,{field: 'sex', title: '性别', width:150}
+     		 ,{field: 'hiredate', title: '入职时间', width:150}
+     		 ,{field: 'departuretime', title: '离职时间', width:150}
+     		 ,{field: 'status', title: '状态', width:150}
+     		 ,{field: 'departmentId', title: '所属部门', width:150}
+     		 ,{field: 'employeeId', title: '直属领导', width:150}
+     		 ,{field: 'jobnumber', title: '工号', width:150}
+     	
+      
+    	   ]
+    		]
+  	,skin: 'row' //表格风格
+    ,even: true
+    ,page: true //是否显示分页
+    ,limits: [3,5,10]
+    ,limit: 10 //每页默认显示的数量
+  });
+  
+  var $ = layui.$, active = {
+		    reload: function(){
+		      var demoReload = $('#id');
+		      var demoReload2 = $('#name');
+		      
+		      //执行重载
+		      table.reload('testReload', {
+		        page: {
+		          curr: 1 //重新从第 1 页开始
+		        }
+		        ,where: {
+		         // key: {
+		            id: demoReload.val(),
+		            name: demoReload2.val()
+		         // }
+		        }
+		      });
+		    }
+		  };
+		  
+		  $('.demoTable .layui-btn').on('click', function(){
+		    var type = $(this).data('type');
+		    active[type] ? active[type].call(this) : '';
+		  });
+  
+});
+</script>
+</html>

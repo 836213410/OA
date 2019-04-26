@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+      
+<mapper namespace="com.rt.modules.setting.mapper">
+
+     <!-- 
+          ################ Dapeng Generator 生成, 公共SQL开始,这些SQL仅用于构成操作表的SQL,以简化配置 ##################   
+     -->
+    
+    <!-- pub_dict 表所有列 -->
+    <sql id="pubSelect">
+      SELECT 
+        dict_itm_id dictItmId, dict_nm dictNm, itm_key itmKey, itm_val itmVal, para1 para1, para2 para2, para3 para3, odr_num odrNum, dlt_flg dltFlg, crt_tm crtTm, udt_tm udtTm, rmk rmk
+      FROM pub_dict 
+    </sql>
+    
+    <!-- pub_dict 统计记录数 -->
+    <sql id="pubCount">
+      SELECT COUNT(1) FROM pub_dict
+    </sql>
+    
+    <!-- 插入sql -->
+    <sql id="pubInsert">  
+        INSERT INTO pub_dict 
+          <trim prefix="(" suffixOverrides=",">
+             <if test="dictItmId != null">dict_itm_id,</if>
+             <if test="dictNm != null">dict_nm,</if>
+             <if test="itmKey != null">itm_key,</if>
+             <if test="itmVal != null">itm_val,</if>
+             <if test="para1 != null">para1,</if>
+             <if test="para2 != null">para2,</if>
+             <if test="para3 != null">para3,</if>
+             <if test="odrNum != null">odr_num,</if>
+             <if test="dltFlg != null">dlt_flg,</if>
+             <if test="crtTm != null">crt_tm,</if>
+             <if test="udtTm != null">udt_tm,</if>
+             <if test="rmk != null">rmk,</if>
+          </trim>
+          ) VALUES
+          <trim prefix="(" suffixOverrides=",">
+             <if test="dictItmId != null">#{dictItmId},</if>
+             <if test="dictNm != null">#{dictNm},</if>
+             <if test="itmKey != null">#{itmKey},</if>
+             <if test="itmVal != null">#{itmVal},</if>
+             <if test="para1 != null">#{para1},</if>
+             <if test="para2 != null">#{para2},</if>
+             <if test="para3 != null">#{para3},</if>
+             <if test="odrNum != null">#{odrNum},</if>
+             <if test="dltFlg != null">#{dltFlg},</if>
+             <if test="crtTm != null">#{crtTm},</if>
+             <if test="udtTm != null">#{udtTm},</if>
+             <if test="rmk != null">#{rmk},</if>
+         </trim>
+         )
+    </sql>
+    
+    <!-- 修改 pub_dict 表记录基础SQL,不能包含主键 -->
+    <sql id="pubUpdateColumns">
+       UPDATE pub_dict 
+         <set>
+             <if test="dictNm != null">dict_nm = #{dictNm},</if>
+             <if test="itmKey != null">itm_key = #{itmKey},</if>
+             <if test="itmVal != null">itm_val = #{itmVal},</if>
+             <if test="para1 != null">para1 = #{para1},</if>
+             <if test="para2 != null">para2 = #{para2},</if>
+             <if test="para3 != null">para3 = #{para3},</if>
+             <if test="odrNum != null">odr_num = #{odrNum},</if>
+             <if test="dltFlg != null">dlt_flg = #{dltFlg},</if>
+             <if test="crtTm != null">crt_tm = #{crtTm},</if>
+             <if test="udtTm != null">udt_tm = #{udtTm},</if>
+             <if test="rmk != null">rmk = #{rmk},</if>
+         </set>
+    </sql>
+    
+    <!-- 删除 pub_dict 表记录基础SQL -->
+    <sql id="pubDelete">
+        DELETE FROM pub_dict
+    </sql>
+    
+     <!-- pub_dict 表主键 WHERE 条件 -->
+    <sql id="pubPkColumnsWhere">
+        AND dict_itm_id = #{dictItmId}
+    </sql>
+  
+    <!-- pub_dict 表所有列 WHERE 条件 -->
+    <sql id="pubAllColumnsWhere">
+        <if test="dictItmId != null"> AND dict_itm_id = #{dictItmId} </if>
+        <if test="dictNm != null"> AND dict_nm = #{dictNm} </if>
+        <if test="itmKey != null"> AND itm_key = #{itmKey} </if>
+        <if test="itmVal != null"> AND itm_val = #{itmVal} </if>
+        <if test="para1 != null"> AND para1 = #{para1} </if>
+        <if test="para2 != null"> AND para2 = #{para2} </if>
+        <if test="para3 != null"> AND para3 = #{para3} </if>
+        <if test="odrNum != null"> AND odr_num = #{odrNum} </if>
+        <if test="dltFlg != null"> AND dlt_flg = #{dltFlg} </if>
+        <if test="crtTm != null"> AND crt_tm = #{crtTm} </if>
+        <if test="udtTm != null"> AND udt_tm = #{udtTm} </if>
+        <if test="rmk != null"> AND rmk = #{rmk} </if>
+    </sql>
+    
+    <!-- pub_dict 表所有列 WHERE 条件, 加Cdn后缀作为HashMap键值,一般仅用于Update语名 -->
+    <sql id="pubAllColumnsUpdateWhere">
+        <if test="dictItmIdCdn != null"> AND dict_itm_id = #{dictItmIdCdn} </if>
+        <if test="dictNmCdn != null"> AND dict_nm = #{dictNmCdn} </if>
+        <if test="itmKeyCdn != null"> AND itm_key = #{itmKeyCdn} </if>
+        <if test="itmValCdn != null"> AND itm_val = #{itmValCdn} </if>
+        <if test="para1Cdn != null"> AND para1 = #{para1Cdn} </if>
+        <if test="para2Cdn != null"> AND para2 = #{para2Cdn} </if>
+        <if test="para3Cdn != null"> AND para3 = #{para3Cdn} </if>
+        <if test="odrNumCdn != null"> AND odr_num = #{odrNumCdn} </if>
+        <if test="dltFlgCdn != null"> AND dlt_flg = #{dltFlgCdn} </if>
+        <if test="crtTmCdn != null"> AND crt_tm = #{crtTmCdn} </if>
+        <if test="udtTmCdn != null"> AND udt_tm = #{udtTmCdn} </if>
+        <if test="rmkCdn != null"> AND rmk = #{rmkCdn} </if>
+    </sql>
+    
+    <!-- 
+        ######################## Pengpeng Generator 生成, 以下是对表进行增,查,改,删 ########################  
+     -->
+    
+    <!-- 向 pub_dict 表新增记录 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="dictItmId" parameterType="com.rt.modules.setting.po.PubDictPo">  
+        <include refid="pubInsert"/>
+    </insert>
+    
+    <!-- 修改 pub_dict 表记录, 传入参数是一个对象 -->
+    <update id="updateByPk" parameterType="com.rt.modules.setting.po.PubDictPo">
+       <include refid="pubUpdateColumns"/>
+       <where>
+           <include refid="pubPkColumnsWhere"/>
+       </where>
+    </update>
+    
+    <!-- 修改 pub_dict 表记录, 传入参数是一个java.util.HashMap, HashMap的条件值加Cdn后缀以区别Update Set的属性 -->
+    <update id="updateByHashMap" parameterType="java.util.HashMap">
+       <include refid="pubUpdateColumns"/>
+       <where>
+           <include refid="pubAllColumnsUpdateWhere"/>
+       </where>
+    </update>
+    
+    <!-- 删除 pub_dict 表记录, 传入参数是一个对象 -->
+    <delete id="deleteByPk" parameterType="java.lang.Long">
+       <include refid="pubDelete"/>
+       <where>
+           <include refid="pubPkColumnsWhere"/>
+       </where>
+    </delete>
+    
+    <!-- 删除 pub_dict 表记录, 传入参数是一个java.util.HashMap -->
+    <delete id="deleteByObj" parameterType="com.rt.modules.setting.po.PubDictPo">
+       <include refid="pubDelete"/>
+       <where>
+           <include refid="pubAllColumnsWhere"/>
+       </where>
+    </delete>
+    
+    <!-- 查符合条件的记录数 -->
+    <select  id="findObjByPk" parameterType="java.lang.Long" resultType="com.rt.modules.setting.po.PubDictPo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubPkColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 所有列作为查询条件, 查询 pub_dict 表所有列, 传入参数是Object, 返回一个集合 -->
+    <select  id="queryLstByObj" parameterType="com.rt.modules.setting.po.PubDictPo" resultType="com.rt.modules.setting.po.PubDictPo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 查符合条件的记录数 -->
+    <select  id="queryCountByObj" parameterType="com.rt.modules.setting.po.PubDictPo" resultType="java.lang.Integer">
+        <include refid="pubCount"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+
+    <!-- 所有列作为查询条件, 查询 pub_dict 表所有列, 传入参数是Object, 返回一个分页后的集合 -->
+    <select  id="queryPageByObj" parameterType="com.rt.modules.setting.po.PubDictPo" resultType="com.rt.modules.setting.po.PubDictPo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 查符合条件的记录数 -->
+    <select  id="queryCountByMap" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        <include refid="pubCount"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 所有列作为查询条件, 查询 pub_dict 表所有列, 传入参数是Object, 返回一个集合 -->
+    <select  id="queryPageByMap" parameterType="java.util.HashMap" resultType="com.rt.modules.setting.po.PubDictPo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 
+        ########################################## 以下放置您的代码 ##########################################  
+     -->
+     <!--  根据传入的字典名称和字典值，查询出对应的字典条目  -->
+     
+    <select id="getDictItmKey" resultType="java.lang.String">
+select itm_key from pub_dict where dict_nm = #{dictNm,jdbcType=VARCHAR} and itm_val = #{itmVal,jdbcType=VARCHAR}
+</select>
+</mapper>
+</mapper>

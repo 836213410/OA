@@ -4,6 +4,10 @@ package com.rt.modules.employee.dto.vo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  *  [employee] VO
  * Generate by Wanpeng.Hui's Dapeng-Generator 2019/04/23 <br/>
@@ -21,7 +25,11 @@ public class EmployeeVo {
 	private String mobile; 
 	private Long age; // 年龄
 	private Short sex; // 性别 1为男0为女
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date hiredate; // 入职时间
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date departuretime; // 离职时间
 	private Short status; // 在职状态，默认1在职，0离职
 	private Long departmentId; // 所属部门

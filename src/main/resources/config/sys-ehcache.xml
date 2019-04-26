@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd">
+
+    <!--  字典表缓存 -->
+    <cache name="pubDictCache"
+           eternal="false"
+           timeToIdleSeconds="360"
+           timeToLiveSeconds="360"
+           overflowToDisk="false"
+           maxElementsInMemory="10000">
+    </cache>
+    
+       <cache name="pubDictItmKeyCache"
+           eternal="false"
+           timeToIdleSeconds="360"
+           timeToLiveSeconds="360"
+           overflowToDisk="false"
+           maxElementsInMemory="10000">
+    </cache>
+
+</ehcache>

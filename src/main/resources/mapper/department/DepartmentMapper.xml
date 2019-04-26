@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+      
+<mapper namespace="com.rt.modules.department.mapper">
+
+     <!-- 
+          ################ Dapeng Generator 生成, 公共SQL开始,这些SQL仅用于构成操作表的SQL,以简化配置 ##################   
+     -->
+    
+    <!-- department 表所有列 -->
+    <sql id="pubSelect">
+      SELECT 
+        id id, dept_name deptName, chief_id chiefId, manage_id manageId, total_num totalNum, real_num realNum, dlt_flg dltFlg, rmk rmk, crt_tm crtTm, upt_tm uptTm
+      FROM department 
+    </sql>
+    
+    <!-- department 统计记录数 -->
+    <sql id="pubCount">
+      SELECT COUNT(1) FROM department
+    </sql>
+    
+    <!-- 插入sql -->
+    <sql id="pubInsert">  
+        INSERT INTO department 
+          <trim prefix="(" suffixOverrides=",">
+             <if test="id != null">id,</if>
+             <if test="deptName != null">dept_name,</if>
+             <if test="chiefId != null">chief_id,</if>
+             <if test="manageId != null">manage_id,</if>
+             <if test="totalNum != null">total_num,</if>
+             <if test="realNum != null">real_num,</if>
+             <if test="dltFlg != null">dlt_flg,</if>
+             <if test="rmk != null">rmk,</if>
+             <if test="crtTm != null">crt_tm,</if>
+             <if test="uptTm != null">upt_tm,</if>
+          </trim>
+          ) VALUES
+          <trim prefix="(" suffixOverrides=",">
+             <if test="id != null">#{id},</if>
+             <if test="deptName != null">#{deptName},</if>
+             <if test="chiefId != null">#{chiefId},</if>
+             <if test="manageId != null">#{manageId},</if>
+             <if test="totalNum != null">#{totalNum},</if>
+             <if test="realNum != null">#{realNum},</if>
+             <if test="dltFlg != null">#{dltFlg},</if>
+             <if test="rmk != null">#{rmk},</if>
+             <if test="crtTm != null">#{crtTm},</if>
+             <if test="uptTm != null">#{uptTm},</if>
+         </trim>
+         )
+    </sql>
+    
+    <!-- 修改 department 表记录基础SQL,不能包含主键 -->
+    <sql id="pubUpdateColumns">
+       UPDATE department 
+         <set>
+             <if test="deptName != null">dept_name = #{deptName},</if>
+             <if test="chiefId != null">chief_id = #{chiefId},</if>
+             <if test="manageId != null">manage_id = #{manageId},</if>
+             <if test="totalNum != null">total_num = #{totalNum},</if>
+             <if test="realNum != null">real_num = #{realNum},</if>
+             <if test="dltFlg != null">dlt_flg = #{dltFlg},</if>
+             <if test="rmk != null">rmk = #{rmk},</if>
+             <if test="crtTm != null">crt_tm = #{crtTm},</if>
+             <if test="uptTm != null">upt_tm = #{uptTm},</if>
+         </set>
+    </sql>
+    
+    <!-- 删除 department 表记录基础SQL -->
+    <sql id="pubDelete">
+        DELETE FROM department
+    </sql>
+    
+     <!-- department 表主键 WHERE 条件 -->
+    <sql id="pubPkColumnsWhere">
+        AND id = #{id}
+    </sql>
+  
+    <!-- department 表所有列 WHERE 条件 -->
+    <sql id="pubAllColumnsWhere">
+        <if test="id != null"> AND id = #{id} </if>
+        <if test="deptName != null"> AND dept_name = #{deptName} </if>
+        <if test="chiefId != null"> AND chief_id = #{chiefId} </if>
+        <if test="manageId != null"> AND manage_id = #{manageId} </if>
+        <if test="totalNum != null"> AND total_num = #{totalNum} </if>
+        <if test="realNum != null"> AND real_num = #{realNum} </if>
+        <if test="dltFlg != null"> AND dlt_flg = #{dltFlg} </if>
+        <if test="rmk != null"> AND rmk = #{rmk} </if>
+        <if test="crtTm != null"> AND crt_tm = #{crtTm} </if>
+        <if test="uptTm != null"> AND upt_tm = #{uptTm} </if>
+    </sql>
+    
+    <!-- department 表所有列 WHERE 条件, 加Cdn后缀作为HashMap键值,一般仅用于Update语名 -->
+    <sql id="pubAllColumnsUpdateWhere">
+        <if test="idCdn != null"> AND id = #{idCdn} </if>
+        <if test="deptNameCdn != null"> AND dept_name = #{deptNameCdn} </if>
+        <if test="chiefIdCdn != null"> AND chief_id = #{chiefIdCdn} </if>
+        <if test="manageIdCdn != null"> AND manage_id = #{manageIdCdn} </if>
+        <if test="totalNumCdn != null"> AND total_num = #{totalNumCdn} </if>
+        <if test="realNumCdn != null"> AND real_num = #{realNumCdn} </if>
+        <if test="dltFlgCdn != null"> AND dlt_flg = #{dltFlgCdn} </if>
+        <if test="rmkCdn != null"> AND rmk = #{rmkCdn} </if>
+        <if test="crtTmCdn != null"> AND crt_tm = #{crtTmCdn} </if>
+        <if test="uptTmCdn != null"> AND upt_tm = #{uptTmCdn} </if>
+    </sql>
+    
+    <!-- 
+        ######################## Pengpeng Generator 生成, 以下是对表进行增,查,改,删 ########################  
+     -->
+    
+    <!-- 向 department 表新增记录 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.rt.modules.department.po.DepartmentPo">  
+        <include refid="pubInsert"/>
+    </insert>
+    
+    <!-- 修改 department 表记录, 传入参数是一个对象 -->
+    <update id="updateByPk" parameterType="com.rt.modules.department.po.DepartmentPo">
+       <include refid="pubUpdateColumns"/>
+       <where>
+           <include refid="pubPkColumnsWhere"/>
+       </where>
+    </update>
+    
+    <!-- 修改 department 表记录, 传入参数是一个java.util.HashMap, HashMap的条件值加Cdn后缀以区别Update Set的属性 -->
+    <update id="updateByHashMap" parameterType="java.util.HashMap">
+       <include refid="pubUpdateColumns"/>
+       <where>
+           <include refid="pubAllColumnsUpdateWhere"/>
+       </where>
+    </update>
+    
+    <!-- 删除 department 表记录, 传入参数是一个对象 -->
+    <delete id="deleteByPk" parameterType="java.lang.Long">
+       <include refid="pubDelete"/>
+       <where>
+           <include refid="pubPkColumnsWhere"/>
+       </where>
+    </delete>
+    
+    <!-- 删除 department 表记录, 传入参数是一个java.util.HashMap -->
+    <delete id="deleteByObj" parameterType="com.rt.modules.department.po.DepartmentPo">
+       <include refid="pubDelete"/>
+       <where>
+           <include refid="pubAllColumnsWhere"/>
+       </where>
+    </delete>
+    
+    <!-- 查符合条件的记录数 -->
+    <select  id="findObjByPk" parameterType="java.lang.Long" resultType="com.rt.modules.department.po.DepartmentPo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubPkColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 所有列作为查询条件, 查询 department 表所有列, 传入参数是Object, 返回一个集合 -->
+    <select  id="queryLstByObj" parameterType="com.rt.modules.department.po.DepartmentPo" resultType="com.rt.modules.department.po.DepartmentPo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 查符合条件的记录数 -->
+    <select  id="queryCountByObj" parameterType="com.rt.modules.department.po.DepartmentPo" resultType="java.lang.Integer">
+        <include refid="pubCount"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+
+    <!-- 所有列作为查询条件, 查询 department 表所有列, 传入参数是Object, 返回一个分页后的集合 -->
+    <select  id="queryPageByObj" parameterType="com.rt.modules.department.po.DepartmentPo" resultType="com.rt.modules.department.po.DepartmentPo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 查符合条件的记录数 -->
+    <select  id="queryCountByMap" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        <include refid="pubCount"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 所有列作为查询条件, 查询 department 表所有列, 传入参数是Object, 返回一个集合 -->
+    <select  id="queryPageByMap" parameterType="java.util.HashMap" resultType="com.rt.modules.department.po.DepartmentPo">
+        <include refid="pubSelect"/>
+        <where>
+           <include refid="pubAllColumnsWhere"/>
+        </where>
+    </select>
+    
+    <!-- 
+        ########################################## 以下放置您的代码 ##########################################  
+     -->
+    
+</mapper>
