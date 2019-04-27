@@ -21,6 +21,9 @@ import com.rt.modules.department.service.CrtUptDepartmentService;
 import com.rt.modules.department.service.DltDepartmentService;
 import com.rt.modules.department.service.QryDepartmentService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 
 /** 
  * Description: [department]控制器 <br/>
@@ -31,6 +34,7 @@ import com.rt.modules.department.service.QryDepartmentService;
  */
 @Controller
 @RequestMapping("/department")
+@Api
 public class DepartmentMgrController extends BaseController {
 
 	@Autowired
@@ -50,6 +54,7 @@ public class DepartmentMgrController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/qryPgDepartment")
+	@ApiOperation(value="部门分页查询接口")
 	public @ResponseBody QryPgBaseRes<DepartmentVo> qryPgDepartment(QryPgDepartmentReq req) {
 		logger.info("服务提供者, 进入查询");
 		QryPgBaseRes<DepartmentVo> res = qryDepartmentService.qryPgDepartment(req);
@@ -65,6 +70,7 @@ public class DepartmentMgrController extends BaseController {
 	 * @return 
 	 */
 	@RequestMapping(value = "/getDepartmentVoById")
+	@ApiOperation(value="部门查询接口(ID)")
 	public @ResponseBody QryObjRes<DepartmentVo> getDepartmentVoById(Long id){
 	   logger.info("服务提供者, 根据{}查询对象", id);
 	   return qryDepartmentService.getDepartmentVoById(id);
@@ -78,6 +84,7 @@ public class DepartmentMgrController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/crtDepartment")
+	@ApiOperation(value="增加部门接口")
 	public @ResponseBody BaseRes crtDepartment(CrtUptDepartmentReq req) {
 		logger.info("服务提供者, 执行添加");
 		BaseRes res = crtUptDepartmentService.crtDepartment(req);
@@ -93,6 +100,7 @@ public class DepartmentMgrController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/uptDepartment")
+	@ApiOperation(value="更新部门接口")
 	public @ResponseBody BaseRes uptDepartment(CrtUptDepartmentReq req) {
 		logger.info("服务提供者, 执行修改");
 		BaseRes res = crtUptDepartmentService.uptDepartment(req);
@@ -139,6 +147,7 @@ public class DepartmentMgrController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/dltPscDepartment")
+	@ApiOperation(value="删除部门接口")
 	public @ResponseBody BaseRes dltPscDepartment(DltBaseReq req) {
 		logger.info("执行物理删除");
 		BaseRes res = dltDepartmentService.dltPscDepartment(req);
