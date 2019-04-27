@@ -84,6 +84,10 @@ public class UserMgrController extends BaseController {
 	    ImageIO.write(image, "png", os);   //将图片输出给浏览器  
 	}  
 	
+	
+	
+	
+	
 	/**
 	 * 分页查询
 	 * @param req
