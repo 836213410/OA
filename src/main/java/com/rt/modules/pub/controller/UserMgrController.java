@@ -71,6 +71,11 @@ public class UserMgrController extends BaseController {
 		return "/pub/login";
 	}
 	
+	@RequestMapping("/main")
+	public String goMain() {
+		return "/pub/main";
+	}
+	
 	
 	@RequestMapping("/valicode")
 	public void valicode(HttpServletResponse response, HttpSession session) throws Exception{  
