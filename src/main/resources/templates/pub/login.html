@@ -15,7 +15,8 @@
         <!--<img src="image/ex_logo.png" class="admin-logo">-->
         <!--</div>-->
         <form class="layui-form" action="">
-            <div>
+            
+           <div>
                 <i class="layui-icon layui-icon-username admin-icon admin-icon-username"></i>
                 <input type="text" name="username" placeholder="请输入用户名"
                        autocomplete="off"
@@ -28,6 +29,7 @@
                        autocomplete="off"
                        class="layui-input admin-input">
             </div>
+           
             <div>
                 <input type="text" name="verify"
                        placeholder="请输入验证码"
@@ -36,6 +38,12 @@
                 <img class="admin-captcha" src=""
                      onclick="updateVerify()" id="validateCodeImg">
             </div>
+ 				<div>
+ 					 <span style="color:black;margin-left: 200px;margin-top:50px;font-style: inherit;font-weight: bold;">记住我</span>
+ 					 <input type="checkbox" checked lay-skin="switch" lay-filter="encrypt" title="是否加密">
+ 					
+ 				</div>
+           
             <button class="layui-btn admin-button" lay-submit lay-filter="formDemo">登陆</button>
 
 
@@ -53,6 +61,9 @@
 		$("#validateCodeImg").attr("src", '/pub/valicode?r=' + Math.random());
 	}
 
+    layui.use('form', function () {
+        var form = layui.form;
+    });
 
 </script>
 </body>

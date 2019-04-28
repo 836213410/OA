@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Layui</title>
+		<link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+	</head>
+	<body>
+		<div class="layui-side layui-bg-black">
+			<div class="layui-side-scroll">
+				<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+				<ul class="layui-nav layui-nav-tree" lay-filter="test" id="memus"></ul>
+			</div>
+		</div>
+		<div class="layui-body">
+			<!-- 动态选项卡 -->
+			<div id="tabzu" class="layui-tab layui-tab-card layui-tab-brief" lay-filter="tabDemo" lay-allowclose="true">
+				<ul class="layui-tab-title"></ul>
+				<div class="layui-tab-content"></div>
+			</div>
+		</div>
+		<script src="/static/layui/layui.all.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/static/js/main/index.js" ></script>
+	</body>
+ 
+</html>	

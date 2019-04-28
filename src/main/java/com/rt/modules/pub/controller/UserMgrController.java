@@ -71,6 +71,11 @@ public class UserMgrController extends BaseController {
 		return "/pub/login";
 	}
 	
+	@RequestMapping("/main")
+	public String goMain() {
+		return "/pub/main";
+	}
+	
 	
 	@RequestMapping("/valicode")
 	public void valicode(HttpServletResponse response, HttpSession session) throws Exception{  
@@ -83,6 +88,10 @@ public class UserMgrController extends BaseController {
 	    OutputStream os = response.getOutputStream();  
 	    ImageIO.write(image, "png", os);   //将图片输出给浏览器  
 	}  
+	
+	
+	
+	
 	
 	/**
 	 * 分页查询

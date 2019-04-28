@@ -213,5 +213,5 @@
     <select id="getDictItmKey" resultType="java.lang.String">
 select itm_key from pub_dict where dict_nm = #{dictNm,jdbcType=VARCHAR} and itm_val = #{itmVal,jdbcType=VARCHAR}
 </select>
-</mapper>
+
 </mapper>
