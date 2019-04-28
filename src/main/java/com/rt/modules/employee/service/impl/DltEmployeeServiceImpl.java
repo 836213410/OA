@@ -92,13 +92,13 @@ public class DltEmployeeServiceImpl implements DltEmployeeService{
 		}
 		// 逻辑删除
 		else if (1 == oprtType) {
-			dbEmployeePo.setDltFlg((short)1);
+			dbEmployeePo.setDltflg((short)1);
 			employeeMapper.updateByPk(dbEmployeePo);
 			res.setResMsg("逻辑删除成功");
 		}
 		// 恢复删除
 		else {
-			dbEmployeePo.setDltFlg((short)0);
+			dbEmployeePo.setDltflg((short)0);
 			employeeMapper.updateByPk(dbEmployeePo);
 			res.setResMsg("恢复删除成功");
 			return res;

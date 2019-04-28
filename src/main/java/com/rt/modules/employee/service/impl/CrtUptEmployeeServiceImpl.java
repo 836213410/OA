@@ -94,7 +94,7 @@ public class CrtUptEmployeeServiceImpl implements CrtUptEmployeeService{
  		employeePo.setJobnumber(req.getJobnumber()); // 工号
  		employeePo.setSalaryId(req.getSalaryId()); 
  		employeePo.setEdubg(req.getEdubg()); // 学历 1本科2大专3硕士4博士5大专以下
- 		employeePo.setDltFlg(req.getDltFlg()); // 删除类型
+ 		employeePo.setDltflg(req.getDltFlg()); // 删除类型
  		employeePo.setIdcard(req.getIdcard()); // 身份证号码
 		
 		if(isCreate){

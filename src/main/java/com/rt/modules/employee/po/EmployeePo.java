@@ -29,7 +29,7 @@ public class EmployeePo {
     private String jobnumber; // 工号
     private Long salaryId; 
     private Short edubg; // 学历 1本科2大专3硕士4博士5大专以下
-    private Short dltFlg; // 删除类型
+    private Short dltflg; // 删除类型
     private String idcard; // 身份证号码,不能为空
     private String salt; // 盐
   
@@ -311,23 +311,17 @@ public class EmployeePo {
       this.edubg = edubg;
     }
     
-    /** 
-     *Getter 删除类型
-     *@return
-     */
-    public Short getDltFlg(){
-      return this.dltFlg;
-    }
+   
     
-    /** 
-     *Setter 删除类型
-     *@param dltflg
-     */
-    public void setDltFlg(Short dltFlg){
-      this.dltFlg = dltFlg;
-    }
-    
-    /** 
+    public Short getDltflg() {
+		return dltflg;
+	}
+
+	public void setDltflg(Short dltflg) {
+		this.dltflg = dltflg;
+	}
+
+	/** 
      *Getter 身份证号码,不能为空
      *@return
      */

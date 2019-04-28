@@ -12,7 +12,7 @@
     <!-- employee 表所有列 -->
     <sql id="pubSelect">
       SELECT 
-        id id, username username,password password,salt salt, realname realname, email email, mobile mobile, age age, sex sex, hiredate hiredate, departuretime departuretime, status status, department_id departmentId, employee_id employeeId, rmk rmk, jobnumber jobnumber, salary_id salaryId, edubg edubg, dltFlg dltflg, idcard idcard
+        id id, username username,password password,salt salt, realname realname, email email, mobile mobile, age age, sex sex, hiredate hiredate, departuretime departuretime, status status, department_id departmentId, employee_id employeeId, rmk rmk, jobnumber jobnumber, salary_id salaryId, edubg edubg, dltFlg dltFlg, idcard idcard
       FROM employee 
     </sql>
     
