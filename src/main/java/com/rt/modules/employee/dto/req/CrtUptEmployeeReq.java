@@ -44,6 +44,7 @@ public class CrtUptEmployeeReq extends BaseReq{
     private Short edubg; // 学历 1本科2大专3硕士4博士5大专以下
     private Short dltFlg; // 删除类型
     private String idcard; // 身份证号码,不能为空
+    private String salt; // 盐
   
     /** 
      *Getter 员工id,主键,不能为空
@@ -332,5 +333,13 @@ public class CrtUptEmployeeReq extends BaseReq{
     public void setIdcard(String idcard){
       this.idcard = idcard;
     }
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
     
 }
