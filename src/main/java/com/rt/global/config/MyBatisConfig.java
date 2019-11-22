@@ -29,6 +29,7 @@ public class MyBatisConfig {
 	@Bean
 	@ConfigurationProperties(prefix = "spring.datasource")
 	public DataSource dataSource() {
+		System.out.println("123");
 		return  new com.zaxxer.hikari.HikariDataSource();
 	}
 
