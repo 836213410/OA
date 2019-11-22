@@ -20,6 +20,7 @@ import com.rt.modules.department.dto.vo.DepartmentVo;
 import com.rt.modules.department.service.CrtUptDepartmentService;
 import com.rt.modules.department.service.DltDepartmentService;
 import com.rt.modules.department.service.QryDepartmentService;
+import com.rt.modules.pub.controller.UserMgrController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -44,7 +45,7 @@ public class DepartmentMgrController extends BaseController {
 	@Autowired
 	private DltDepartmentService dltDepartmentService; // 删除服务
 	
-	private static Logger logger = LoggerFactory.getLogger(DepartmentMgrController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserMgrController.class);
 	
 	/**
 	 * Description: 执行查询 <br/>

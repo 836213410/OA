@@ -44,6 +44,20 @@ import com.rt.modules.pub.service.QryUserService;
  *
  *@Version 1.0
  */
+/** 
+ *Description: <br/>
+ *Create info: hongyang.zhao, 2019年4月28日 <br/>
+ *Copyright (c) 2019, RunTong Information Technology Co.,Ltd. All Rights Reserved. <br/>
+ *@author hongyang.zhao
+ *@Version 1.0
+ */
+/** 
+ *Description: <br/>
+ *Create info: hongyang.zhao, 2019年4月28日 <br/>
+ *Copyright (c) 2019, RunTong Information Technology Co.,Ltd. All Rights Reserved. <br/>
+ *@author hongyang.zhao
+ *@Version 1.0
+ */
 @Controller
 @RequestMapping("/pub")
 public class UserMgrController extends BaseController {
@@ -193,6 +207,8 @@ public class UserMgrController extends BaseController {
 		logger.info("响应码:{}, 响应消息:{}", res.getResCode(), res.getResMsg());
 		return res;
 	}
+	
+	
 	
 	
 }

@@ -12,7 +12,7 @@
     <!-- employee 表所有列 -->
     <sql id="pubSelect">
       SELECT 
-        id id, username username,password password, realname realname, email email, mobile mobile, age age, sex sex, hiredate hiredate, departuretime departuretime, status status, department_id departmentId, employee_id employeeId, rmk rmk, jobnumber jobnumber, salary_id salaryId, edubg edubg, dltFlg dltflg, idcard idcard
+        id id, username username,password password,salt salt, realname realname, email email, mobile mobile, age age, sex sex, hiredate hiredate, departuretime departuretime, status status, department_id departmentId, employee_id employeeId, rmk rmk, jobnumber jobnumber, salary_id salaryId, edubg edubg, dltFlg dltFlg, idcard idcard
       FROM employee 
     </sql>
     
@@ -44,6 +44,7 @@
              <if test="edubg != null">edubg,</if>
              <if test="dltflg != null">dltFlg,</if>
              <if test="idcard != null">idcard,</if>
+             <if test="salt != null">salt,</if>
           </trim>
           ) VALUES
           <trim prefix="(" suffixOverrides=",">
@@ -92,6 +93,7 @@
              <if test="edubg != null">edubg = #{edubg},</if>
              <if test="dltflg != null">dltFlg = #{dltflg},</if>
              <if test="idcard != null">idcard = #{idcard},</if>
+             <if test="salt != null">salt = #{salt},</if>
          </set>
     </sql>
     
@@ -126,6 +128,7 @@
         <if test="edubg != null"> AND edubg = #{edubg} </if>
         <if test="dltflg != null"> AND dltFlg = #{dltflg} </if>
         <if test="idcard != null"> AND idcard = #{idcard} </if>
+        <if test="salt != null"> AND salt = #{salt} </if>
     </sql>
     
     <!-- employee 表所有列 WHERE 条件, 加Cdn后缀作为HashMap键值,一般仅用于Update语名 -->
@@ -149,6 +152,7 @@
         <if test="edubgCdn != null"> AND edubg = #{edubgCdn} </if>
         <if test="dltflgCdn != null"> AND dltFlg = #{dltflgCdn} </if>
         <if test="idcardCdn != null"> AND idcard = #{idcardCdn} </if>
+        <if test="saltCdn != null"> AND idcard = #{saltCdn} </if>
     </sql>
     
     <!-- 

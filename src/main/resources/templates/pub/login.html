@@ -19,7 +19,7 @@
            <div>
                 <i class="layui-icon layui-icon-username admin-icon admin-icon-username"></i>
                 <input type="text" name="username" placeholder="请输入用户名"
-                       autocomplete="off"
+                       autocomplete="off" id="username"
                        class="layui-input admin-input admin-input-username">
             </div>
             <div>
@@ -27,6 +27,7 @@
                 <input type="password" name="password"
                        placeholder="请输入密码"
                        autocomplete="off"
+                       id="password"
                        class="layui-input admin-input">
             </div>
            
@@ -34,17 +35,18 @@
                 <input type="text" name="verify"
                        placeholder="请输入验证码"
                        autocomplete="off"
+                       id="veriCode"
                        class="layui-input admin-input admin-input-verify">
                 <img class="admin-captcha" src=""
                      onclick="updateVerify()" id="validateCodeImg">
             </div>
  				<div>
  					 <span style="color:black;margin-left: 200px;margin-top:50px;font-style: inherit;font-weight: bold;">记住我</span>
- 					 <input type="checkbox" checked lay-skin="switch" lay-filter="encrypt" title="是否加密">
+ 					 <input type="checkbox"  id="rememberMe" checked lay-skin="switch" lay-filter="encrypt" title="是否加密">
  					
  				</div>
            
-            <button class="layui-btn admin-button" lay-submit lay-filter="formDemo">登陆</button>
+            <button class="layui-btn admin-button" onclick="login()" type="button" lay-filter="formDemo">登陆</button>
 
 
         </form>
@@ -53,6 +55,8 @@
 </div>
 <script src="/static/layui/layui.js"></script>
 <script src="/static/js/jquery.js"></script>
+<script src="/static/js/main/md5.js"></script>
+<script src="/static/js/main/sys-res-alert.js"></script>
 <script>
 	updateVerify(); // 初始化时设置图片
 
@@ -61,10 +65,53 @@
 		$("#validateCodeImg").attr("src", '/pub/valicode?r=' + Math.random());
 	}
 
-    layui.use('form', function () {
-        var form = layui.form;
-    });
+	//登录
+	function login(){
+		var username =$("#username").val();
+		var password =$("#password").val();
+		var veriCode =$("#veriCode").val();
+		var rememberMe =$("#rememberMe").prop("checked");
+		
+		if(username==""||password==""||veriCode==""){
+			alert("请完善登录信息再点击登录");
+			return;
+		}
+		
+		 $.ajax({
+	         url: '/pub/userlogin',
+             type: 'post',
+             data: {"username":username,"password":$.md5(password),"veriCode":veriCode,"rememberMe":rememberMe},
+             success: function(data){
+            	if (isOprSuccess(data)) {
+						window.location.href = '/pub/main';
+				} else {
+					layer.open({
+		                content:data.resMsg,//提示信息
+		                anim:Math.floor(Math.random()*8),//0-7的随机动画效果
+		                success:function(layero,index){
+		                    var interval = setInterval(function(){
+		                        var time = --wait;
+		                        if(time <= 0) {
+		                            location.href = url1;
+		                            clearInterval(interval);
+		                        };
+		                    }, 1000);
+		                }
+		            })
 
+					updateVerify();
+				}
+			}
+		});
+
+	}
+
+	layui.use('form', function() {
+		var form = layui.form;
+	});
+    layui.use('layer', function(){
+    	var layer = layui.layer;
+    });
 </script>
 </body>
 </html>

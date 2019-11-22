@@ -27,7 +27,7 @@ public class SwaggerConfig {
     //是否开启swagger，正式环境一般是需要关闭的，可根据springboot的多环境配置进行设置
     @Value(value = "${swagger.enabled}")
     Boolean swaggerEnabled;
- 
+    
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
@@ -39,6 +39,7 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any()).build().pathMapping("/");
     }
  
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("RT系统接口测试页面")
