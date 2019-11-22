@@ -72,6 +72,11 @@
 		<artifactId>poi-examples</artifactId>
 		<version>3.9</version>
 	</dependency>
+		<dependency>
+		<groupId>commons-httpclient</groupId>
+		<artifactId>commons-httpclient</artifactId>
+		<version>3.0.1</version>
+	</dependency>
 	<dependency>
 		<groupId>org.apache.poi</groupId>
 		<artifactId>poi-scratchpad</artifactId>
@@ -91,6 +96,11 @@
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
 		</dependency>
+		<dependency>
+		<groupId>commons-httpclient</groupId>
+		<artifactId>commons-httpclient</artifactId>
+		<version>3.0.1</version>
+	</dependency>
  
 <dependency>
     <groupId>net.sourceforge.nekohtml</groupId>

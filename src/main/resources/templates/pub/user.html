@@ -1,81 +1,114 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>User</title>
- <link rel="stylesheet" href="/static/layui/css/layui.css"  media="all">
-</head>
-
-<body>
-<div class="demoTable">
-  ID：
-  <div class="layui-inline">
-    <input class="layui-input" name="id" id="demoReload" autocomplete="off">
-  </div>
-  姓名：
-  <div class="layui-inline">
-    <input class="layui-input" name="id" id="demoReload2" autocomplete="off">
-  </div>
-  <button class="layui-btn" data-type="reload">搜索</button>
-</div>
-<table id="demo" lay-filter="test"></table>
-
+<html>
+	<head>
+		<title>RT OA System</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="copyright" content="All Rights Reserved, Copyright (C) 2019, wanpeng.hui, Ltd." />
+		
+		<link rel="stylesheet" href="/static/layui/css/layui.css"  media="all">
+		
+	
+	</head>
+	<body id="mainBody" class="easyui-layout">
+		
+		
+		<table id="user_dg" lay-filter="test"></table>
+		
+		
+		<script type="text/html" id="user_bar">
+			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+		</script>
+		
 </body>
- 
-<script src="/static/layui/layui.js"></script>
-<script>
-layui.use('table', function(){
-  var table = layui.table;
-  
-  //第一个实例
-  table.render({
-    elem: '#demo'
-    ,height: 500
-    ,toolbar:"#toolbarDemo"
-    ,title:"User表"
-    ,url: '/pub/qryPgUser' //数据接口
-    ,page: true //开启分页
-    ,id:'testReload'
-    ,cols: [
-    		[ //表头
-    		  {type: 'checkbox', fixed: 'left'}
-			 ,{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
-     		 ,{field: 'name', title: '用户名', width:80}
-      
-    	   ]
-    		]
-  	,skin: 'row' //表格风格
-    ,even: true
-    ,page: true //是否显示分页
-    ,limits: [3,5,10]
-    ,limit: 10 //每页默认显示的数量
-  });
-  
-  var $ = layui.$, active = {
-		    reload: function(){
-		      var demoReload = $('#demoReload');
-		      var demoReload2 = $('#demoReload2');
-		      
-		      //执行重载
-		      table.reload('testReload', {
-		        page: {
-		          curr: 1 //重新从第 1 页开始
-		        }
-		        ,where: {
-		         // key: {
-		            id: demoReload.val(),
-		            name: demoReload2.val()
-		         // }
-		        }
-		      });
-		    }
-		  };
-		  
-		  $('.demoTable .layui-btn').on('click', function(){
-		    var type = $(this).data('type');
-		    active[type] ? active[type].call(this) : '';
-		  });
-  
-});
-</script>
+	<script src="/static/layui/layui.all.js" charset="utf-8"></script>
+	<script src="/static/js/main/sys-res-alert.js" charset="utf-8"></script>
+	<script src="/static/js/jquery.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		  layui.use('table', function(){
+				  var table = layui.table;
+				  
+				  //第一个实例
+				  table.render({
+					elem: '#user_dg'
+					,height: 500
+					,toolbar:"#toolbarDemo"
+					,title:"User表"
+					,url: '/pub/qryPgUser' //数据接口
+					,page: true //开启分页
+					,id:'testReload'
+					,done:function(res, curr){
+				    	  var brforeCurr = curr; // 获得当前页码
+				    	  var dataLength = res.data.length; // 获得当前页的记录数
+				    	  var count = res.count; // 获得总记录数
+				    	  if(dataLength == 0 && count != 0){ //如果当前页的记录数为0并且总记录数不为0
+				    		  table.reload("testReload",{ // 刷新表格到上一页
+				    			  page:{
+				    				 curr:brforeCurr-1
+				    			  }
+				    		  });
+				    	  }
+				      }
+					,cols: [
+							[ //表头
+							  {type: 'checkbox', fixed: 'left'}
+							,{field:'id',title:'id',width:80,sort: true,}
+							,{field:'name',title:'name',width:80,sort: true,}
+							,{fixed: 'right', title:'操作', toolbar: '#user_bar', width:150}
+
+						   ]
+							]
+					,skin: 'row' //表格风格
+					,even: true
+					,page: true //是否显示分页
+					,limits: [3,5,10]
+					,limit: 10 //每页默认显示的数量
+			});
+				  
+				  
+				  
+		//监听编辑删除按钮		 
+		table.on('tool(test)', function(obj) {
+				var delUrl = "";
+				var data = obj.data;
+				//console.log(data)
+				if (obj.event === 'del') {
+					layer.confirm('确定删除此条数据吗', function(index) {
+                        delUrl = "/pub/dltPscUser";
+                        $.ajax({
+            	            type: "POST",
+            	            url: delUrl,
+            	            data: {"id":data.id},
+            	            dataType: "json",
+            	            success: function(data){
+            	            
+								alert(data.resMsg);
+								obj.del();
+        						layer.close(index);
+								//执行重载
+								table.reload('testReload');
+							    
+            	            }
+            	            
+            	        });	
+                        
+					});
+				} else if (obj.event === 'edit') {
+					layer.prompt({
+						formType : 2,
+						value : data.email
+					}, function(value, index) {
+						obj.update({
+							email : value
+						});
+						layer.close(index);
+					});
+				}
+			});
+		
+		
+
+		});
+	</script>
+	
 </html>
