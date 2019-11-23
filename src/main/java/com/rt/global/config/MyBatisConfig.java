@@ -15,12 +15,14 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
-/** 
- *Description: mybatis配置<br/>
- *Create info: hongyang.zhao, 2019年4月16日 <br/>
- *Copyright (c) 2019, RunTong Information Technology Co.,Ltd. All Rights Reserved. <br/>
- *@author hongyang.zhao
- *@Version 1.0
+/**
+ * Description: mybatis配置<br/>
+ * Create info: hongyang.zhao, 2019年4月16日 <br/>
+ * Copyright (c) 2019, RunTong Information Technology Co.,Ltd. All Rights
+ * Reserved. <br/>
+ * 
+ * @author hongyang.zhao
+ * @Version 1.0
  */
 @Configuration
 @MapperScan("com.rt.modules.*.mapper")
@@ -30,7 +32,8 @@ public class MyBatisConfig {
 	@ConfigurationProperties(prefix = "spring.datasource")
 	public DataSource dataSource() {
 		System.out.println("123");
-		return  new com.zaxxer.hikari.HikariDataSource();
+		System.out.println("2019-11-23-11-30");
+		return new com.zaxxer.hikari.HikariDataSource();
 	}
 
 	@Bean
@@ -41,13 +44,13 @@ public class MyBatisConfig {
 
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mapper/*/**.xml"));
-		
+
 		Properties properties = new Properties();
-        properties.setProperty("dialect",  "mysql");
-        PagingInterceptor interceptor = new PagingInterceptor();
-        interceptor.setProperties(properties);
-		sqlSessionFactoryBean.setPlugins(new Interceptor[]{interceptor});
-		
+		properties.setProperty("dialect", "mysql");
+		PagingInterceptor interceptor = new PagingInterceptor();
+		interceptor.setProperties(properties);
+		sqlSessionFactoryBean.setPlugins(new Interceptor[] { interceptor });
+
 		return sqlSessionFactoryBean.getObject();
 	}
 
